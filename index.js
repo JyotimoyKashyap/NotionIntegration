@@ -28,4 +28,4 @@ import { Client } from "@notionhq/client"
         }
     }
     
-    addItem("This is Jyotimoy")
+    addItem("Testing new repo")
