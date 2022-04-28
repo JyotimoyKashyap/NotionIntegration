@@ -12,12 +12,11 @@ jobs:
         with:
           node-version: '16'
       - run: npm i
+      - name: Dumping commits in a file
+        run: |
+          echo "${{toJSON(github.event.commits)}}" > commits.json
       - name: run-index
         env:
           NOTION_DATABASE_ID: ${{ secrets.NOTION_DATABASE_ID }}
           NOTION_KEY: ${{ secrets.NOTION_KEY }}
-        run: node index.js ${{github.event.commits}}
-      - name: Printing the commits
-        run: |
-          echo "${{toJSON(github.event.commits)}}"
-
+        run: node index.js ${{toJSON(github.event.commits)}}}

@@ -1,5 +1,6 @@
 import { Client } from "@notionhq/client"
 import 'dotenv/config'
+import fs from 'fs'
 
 const notion = new Client({auth: process.env.NOTION_KEY})
 
@@ -31,4 +32,12 @@ async function addItem(text){
 
     
 addItem("Test entry")
-console.log(process.argv)
+console.log("command line args", process.argv)
+console.log("reading commits.json file")
+fs.readFile('./commits.json', 'utf8', (err, data) => {
+    if (err) {
+      console.error(err);
+      return;
+    }
+    console.log(data);
+})
