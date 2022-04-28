@@ -12,6 +12,9 @@ jobs:
         with:
           node-version: '16'
       - run: npm i
+      - name: Printing commits on console
+        run: |
+          echo "${{github.event.commits}}"
       - name: Dumping commits in a file
         run: |
           echo "${{toJSON(github.event.commits)}}" > commits.json
