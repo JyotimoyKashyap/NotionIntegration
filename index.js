@@ -31,13 +31,14 @@ async function addItem(text){
 }
 
     
-addItem("Test entry")
-console.log("command line args", process.argv)
 console.log("reading commits.json file")
 fs.readFile('./commits.json', 'utf8', (err, data) => {
     if (err) {
       console.error(err);
       return;
     }
-    console.log(data);
+    let commits = JSON.parse(data)
+    for(let i = 0; i < commits.length; i++){
+        addItem(commits[i]["message"])
+    }
 })
