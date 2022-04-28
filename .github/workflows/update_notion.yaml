@@ -4,9 +4,20 @@ on:
     branches:
       - main
 jobs:
-  sth:
+  setup-node-and-run-index:
     runs-on: ubuntu-latest
     steps:
-      - name: step 1 -- run index.js
-      run: npm start
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '16'
+      - run: npm i
+      - name: run-index
+        env:
+          NOTION_DATABASE_ID: ${{ secrets.NOTION_DATABASE_ID }}
+          NOTION_KEY: ${{ secrets.NOTION_KEY }}
+        run: npm start
+      - name: Printing the commits
+        run: |
+          echo "${{toJSON(github.event.commits)}}"
 
