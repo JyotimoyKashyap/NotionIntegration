@@ -31,3 +31,4 @@ async function addItem(text){
 
     
 addItem("Test entry")
+console.log(process.argv)

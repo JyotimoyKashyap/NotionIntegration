@@ -16,7 +16,7 @@ jobs:
         env:
           NOTION_DATABASE_ID: ${{ secrets.NOTION_DATABASE_ID }}
           NOTION_KEY: ${{ secrets.NOTION_KEY }}
-        run: npm start
+        run: node index.js
       - name: Printing the commits
         run: |
           echo "${{toJSON(github.event.commits)}}"
