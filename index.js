@@ -11,17 +11,34 @@ async function addItem(text){
         const response = await notion.pages.create({
             parent: { database_id: databaseId },
             properties: {
-                title: {
+                'Name' : {
+                    type: 'title',
                     title: [
                         {
-                            "text" : {
-                                "content" : text
-                            }
-                        }
-                    ]
+                            type: 'text',
+                            text: {
+                                content: 'Tomatoes',
+                            },
+                        },
+                    ],
+                },
+                'message': {
+                    type: 'rich_text',
+                    rich_text: [{
+                        text: {
+                            content: 'Grocery List 1',
+                            link: null
+                        },
+                    }]
+                },
+                'branch': {
+                    select: {
+                        name: 'dev-1'
+                    }
+
                 }
-            }
-        })
+            },
+        });
 
         console.log(response)
         console.log("Sucess")
