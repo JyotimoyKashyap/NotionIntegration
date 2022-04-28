@@ -4,8 +4,11 @@
     "version": "1.0.0",
     "description": "This is a notion integration repo",
     "main": "index.js",
+    "scripts": {
+        "start": "node index.js"
+    },
     "dependencies": {
-      "@notionhq/client": "^0.1.9"
+        "@notionhq/client": "^0.1.9",
+        "dotenv": "^16.0.0"
     }
-  }
-  
+}
