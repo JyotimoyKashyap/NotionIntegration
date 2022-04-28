@@ -14,10 +14,7 @@ jobs:
       - run: npm i
       - name: Printing commits on console
         run: |
-          echo "${{github.event.commits}}"
-      - name: Dumping commits in a file
-        run: |
-          echo "${{toJSON(github.event.commits)}}" > commits.json
+          echo "${{github.event.commits}}" > commits.json
       - name: run-index
         env:
           NOTION_DATABASE_ID: ${{ secrets.NOTION_DATABASE_ID }}
